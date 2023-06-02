@@ -29,7 +29,7 @@ int main() {
 	printf("		<table>\n");
 	for(int i=0; i<size; i++) {
 		printf("			<tr>\n");
-		cout<<"				<td><a href=\""<<"Clarez2008.github.io/book/"<<files[i]<<"\" download >"<<files[i]<<"</a></td>"<<endl;
+		cout<<"				<td><a href=\""<<files[i]<<"\" download >"<<files[i]<<"</a></td>"<<endl;
 		printf("			</tr>\n");
 	}
 	printf("		</table>\n");
