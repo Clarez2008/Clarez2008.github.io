@@ -6,51 +6,30 @@
 #include<windows.h>
 #include<io.h>
 using namespace std;
-#define MAX_PATH 80
-std::string to_utf8(const wchar_t* buffer,int len) {
-	int nChars =::WideCharToMultiByte(CP_UTF8,0,buffer,len,NULL,0,NULL,NULL);
-	if(nChars ==0)return"";
-	string newbuffer;
-	newbuffer.resize(nChars);
-	::WideCharToMultiByte(
-	    CP_UTF8,
-	    0,
-	    buffer,
-	    len,
-	    const_cast<char*>(newbuffer.c_str()),
-	    nChars,
-	    NULL,
-	    NULL);
-	return newbuffer;
-}
-std::string to_utf8(const std::wstring& str) {
-	return to_utf8(str.c_str(),(int)str.size());
-}
+#define MAX_PATHH 80
+
 void getFiles( string path, string path2, vector<string>& files );
 int main() {
 	vector<string> files;
-	char   buffer[MAX_PATH];
-	getcwd(buffer, MAX_PATH);
+	char   buffer[MAX_PATHH];
+	getcwd(buffer, MAX_PATHH);
 	string filePath;
 	filePath.assign(buffer).append("\\");
 	////获取该路径下的所有文件
 	getFiles(filePath,"", files );
 	int size = files.size();
-	for (int i = 0; i < size; i++) {
-		cout<<files[i].c_str()<<endl;
-	}
+	
 	freopen("book.html","w",stdout);
 	printf("<!DOCTYPE html>");
 	printf("<html>\n");
 	printf("	<head>\n");
-	printf("		<meta charset=\"utf-8\">\n");
+	printf("		<meta charset=\"ANSL\">\n");
 	printf("	</head>\n");
 	printf("	<body>\n");
 	printf("		<table>\n");
 	for(int i=0; i<size; i++) {
 		printf("			<tr>\n");
-			
-		cout<<"				<td>"<<files[i]<<"</td>"<<endl;
+		cout<<"				<td><a href=\""<<"Clarez2008.github.io/book/"<<files[i]<<"\">"<<files[i]<<"</a></td>"<<endl;
 		printf("			</tr>\n");
 	}
 	printf("		</table>\n");
