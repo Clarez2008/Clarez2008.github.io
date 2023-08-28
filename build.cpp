@@ -24,7 +24,7 @@ int main() {
 	printf("<!DOCTYPE html>\n");
 	printf("<html>\n");
 	printf("	<head>\n");
-	printf("		<meta charset=\"CRLF\">\n");
+	printf("		<meta charset=\"utf-8\">\n");
 	printf("	</head>\n");
 	printf("	<body>\n");
 	printf("		<table>\n");
