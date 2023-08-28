@@ -19,7 +19,7 @@ int main() {
 	//获取该路径下的所有文件
 	getFiles(filePath,"", files );
 	int size = files.size();
-	
+
 	freopen(a.c_str(),"w",stdout);
 	printf("<!DOCTYPE html>\n");
 	printf("<html>\n");
