@@ -9,9 +9,35 @@ using namespace std;
 #define MAX_PATHH 80
 
 void getFiles( string path, string path2, vector<string>& files );
+string to_utf8(const wchar_t* buffer,int len){
+        int nChars =::WideCharToMultiByte(
+                CP_UTF8,
+                0,
+                buffer,
+                len,
+                NULL,
+                0,
+                NULL,
+                NULL);
+        if(nChars ==0)return"";
+
+        string newbuffer;
+        newbuffer.resize(nChars);
+        ::WideCharToMultiByte(
+                CP_UTF8,
+                0,
+                buffer,
+                len,
+                const_cast<char*>(newbuffer.c_str()),
+                nChars,
+                NULL,
+                NULL);
+
+        return newbuffer;
+}
 int main() {
 	string a;cin>>a;
-	vector<string> files;
+	vector<wstring> files;
 	char   buffer[MAX_PATHH];
 	getcwd(buffer, MAX_PATHH);
 	string filePath;
@@ -20,25 +46,25 @@ int main() {
 	getFiles(filePath,"", files );
 	int size = files.size();
 
-	freopen(a.c_str(),"w",stdout);
-	printf("<!DOCTYPE html>\n");
-	printf("<html>\n");
-	printf("	<head>\n");
-	printf("		<meta charset=\"utf-8\">\n");
-	printf("	</head>\n");
-	printf("	<body>\n");
-	printf("		<table>\n");
+//	freopen(a.c_str(),"w",stdout);
+	cout<<to_utf8(L"<!DOCTYPE html>\n",16);
+	cout<<to_utf8(L"<html>\n",7);
+	cout<<to_utf8(L"	<head>\n",8);
+	cout<<to_utf8(L"		<meta charset=\"utf-8\">\n",27);
+	cout<<to_utf8(L"	</head>\n",9);
+	cout<<to_utf8(L"	<body>\n",8);
+	cout<<to_utf8(L"		<table>\n",10);
 	for(int i=0; i<size; i++) {
-		printf("			<tr>\n");
-		cout<<"				<td><a href=\""<<files[i]<<"\" download >"<<files[i]<<"</a></td>"<<endl;
-		printf("			</tr>\n");
+		cout<<to_utf8(L"			<tr>\n",8);
+		cout<<to_utf8(L"				<td><a href=\"",17)<<files[i]<<to_utf8(L"\" download >",12)<<to_utf8(files[i].c_str,(int)(files[i].size()))<<to_utf8("</a></td>",9)<<endl;
+		cout<<to_utf8(L"			</tr>\n",9);
 	}
-	printf("		</table>\n");
-	printf("	</body>\n");
-	printf("</html>\n");
+	cout<<to_utf8(L"		</table>\n",11);
+	cout<<to_utf8(L"	</body>\n",9);
+	cout<<to_utf8(L"</html>\n",8);
 	return 0;
 }
-void getFiles( string path, string path2, vector<string>& files ) {
+void getFiles( string path, string path2, vector<wstring>& files ) {
 	//文件句柄
 	long   hFile   =   0;
 	//文件信息
@@ -54,7 +80,10 @@ void getFiles( string path, string path2, vector<string>& files ) {
 			} else {
 //				files.push_back(p.assign(path2).append(fileinfo.name) );  //这一行可以给出相对路径
 				p.assign(fileinfo.name);
-				if(p!="build.exe")files.push_back(p);  //这一行可以给出文件名
+				if(p!="build.exe"){
+					
+					files.push_back(p);  //这一行可以给出文件名
+				}
 			}
 		} while(_findnext(hFile, &fileinfo)  == 0);
 		_findclose(hFile);
