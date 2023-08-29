@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="./css/download.css">
+	</head>
+	<body>
+		<p>文件已自动下载，如未开始下载，请<a href="./exe/Reader.exe" download="Reder.exe" id="aid">手动下载</a></p>
+ 	</body>
+ 	<script>
+ 		//  进入页面立即触发
+		(()=>{
+			//  兼容IE
+		    if(document.all) {
+		        document.getElementById("aid").click();
+		    }
+		    //  兼容其它浏览器
+		    else {
+		        var e = document.createEvent("MouseEvents");
+		        e.initEvent("click", true, true);
+		        document.getElementById("aid").dispatchEvent(e);
+		    }
+		})();
+ 	</script>
+</html>

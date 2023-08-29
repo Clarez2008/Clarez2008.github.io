@@ -5,17 +5,16 @@
 		<link rel="stylesheet" type="text/css" href="./css/index.css">
 	</head>
 	<body>
-		<p>这是一个小说网站。由<a href="https://github.com/Clarez2008" target="_blank">@Clarez2008</a>制作</p>
- 		<div class="downReader" style="background-color:blue;width:300px;">
- 			<img src="./img/0001.png" alt="Reader's ico">
- 			<p>单击来下载txt阅读器</p>
+		<p>这是一个网站。由<a href="https://github.com/Clarez2008" target="_blank">@Clarez2008</a>制作</p>
+ 		<div id="down">
+ 			<a href="./download.html" >
+ 				<img src="./img/reader.png" alt="Reader's ico" >
+ 				<p>单击来下载txt阅读器(Reader)</p>
+ 			</a>
  		</div>
- 		<a href="https://github.com/binbyu/Reader" target="_blank">关于阅读器</a>
+ 		<a href="https://github.com/binbyu/Reader" target="_blank">关于阅读器(Reader)</a>
 		<form method="post" enctype="https://Clarez2008.github.io/post/bookfile.">
-  		  	<div>
-				<label for="file">选择一个小说来上传（开发中）</label>
-				<input type="file" id="file" name="myFile">
-   		 	</div>
+  		  	
    		 	<div>
    		 		<lable> 小说名</lable>
    		 		<input type="">
@@ -34,20 +33,12 @@
 				</td>
 				<td>
 					<div id="tab-1">
-						<p>下载安卓软件</p>
+						<p>下载软件</p>
 						<iframe src="./apk/apk.html" ></iframe>
 					</div>
 				</td>
 			</tr>
-		</table>	
- 		<script >
- 			let d1=document.querySelector('.downReader');
-			d1.addEventListener('click', dReader);
-			function dReader(){
-				window.open("./exe/Reader.exe")
-				window.open("https://github.com/binbyu/Reader")
-			}
-
- 		</script>
+		</table>
+		<iframe src="./game/game.html" ></iframe>	
  	</body>
 </html>
